@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skillspro/common/splash/splash.dart';
+import 'package:skillspro/routes.dart';
 import 'package:skillspro/theme.dart';
 
 import 'common/home/home.dart';
@@ -17,7 +18,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return GetMaterialApp(
       title: 'Skillspro',
       theme: appTheme,
@@ -25,13 +25,12 @@ class MyApp extends StatelessWidget {
       initialBinding: HomeBinding(),
       getPages: [
         GetPage(name: "/", page: () => const Splash()), // here!
-        GetPage(name: "/getStarted", page: () => const GetStarted()), // here!
-        GetPage(name: "/intro", page: () => const Intro()),
-        GetPage(name: "/login", page: () => const Login()),
-        GetPage(name: "/home", page: () => const Home()),
+        GetPage(
+            name: Routes.getStarted, page: () => const GetStarted()), // here!
+        GetPage(name: Routes.intro, page: () => Intro()),
+        GetPage(name: Routes.login, page: () => const Login()),
+        GetPage(name: Routes.home, page: () => const Home()),
       ],
     );
   }
 }
-
-

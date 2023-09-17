@@ -41,6 +41,7 @@ class SplashController {
   Future<void> next() async {
     if (await hasSeenIntro() == false) {
       waitAndMove(DateTime.now(), "/intro", null);
+      seenIntro();
       return;
     }
     if (await isAuthenticated() == false) {
