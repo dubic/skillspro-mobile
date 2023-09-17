@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:skillspro/routes.dart';
 
 import '../../features/auth/auth_holder.dart';
 
@@ -40,14 +41,14 @@ class SplashController {
 
   Future<void> next() async {
     if (await hasSeenIntro() == false) {
-      waitAndMove(DateTime.now(), "/intro", null);
+      waitAndMove(DateTime.now(), Routes.intro, null);
       seenIntro();
       return;
     }
     if (await isAuthenticated() == false) {
-      waitAndMove(DateTime.now(), "/login", null);
+      waitAndMove(DateTime.now(), Routes.getStarted, null);
       return;
     }
-    waitAndMove(DateTime.now(), "/home", null);
+    waitAndMove(DateTime.now(), Routes.home, null);
   }
 }

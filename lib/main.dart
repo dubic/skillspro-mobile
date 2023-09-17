@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skillspro/common/splash/splash.dart';
+import 'package:skillspro/features/auth/sign_up/sign_up.dart';
 import 'package:skillspro/routes.dart';
 import 'package:skillspro/theme.dart';
 
@@ -27,9 +28,10 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/", page: () => const Splash()), // here!
         GetPage(
             name: Routes.getStarted, page: () => const GetStarted()), // here!
-        GetPage(name: Routes.intro, page: () => Intro()),
+        GetPage(name: Routes.intro, page: () => const Intro()),
         GetPage(name: Routes.login, page: () => const Login()),
         GetPage(name: Routes.home, page: () => const Home()),
+        GetPage(name: Routes.signUp, page: () => const SignUp()),
       ],
     );
   }

@@ -74,6 +74,8 @@ flutter:
     - assets/images/undraw_portfolio_feedback.svg
     - assets/images/undraw_social_girl_re_kdrx.svg
     - assets/images/undraw_Pic_profile_re.png
+    - assets/images/welcome.png
+    - assets/images/google_colorful.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

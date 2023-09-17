@@ -5,18 +5,17 @@ const Color primaryColor = Color(0xff854FE3);
 const Color accentColor = Color(0xFFB695EE);
 const Color textColor = Color(0xFF424242);
 const Color textColorOnPrimary = Colors.white;
+const Color backgoundColor1 = Colors.white;
 
 // Define the text styles for the app
 const TextStyle headingTextStyle = TextStyle(
-  fontSize: 24.0,
+  fontSize: 32.0,
   fontWeight: FontWeight.bold,
-  color: Colors.black,
+  color: Color(0xff363637),
 );
 
-final TextStyle bodyTextStyle = TextStyle(
-  fontSize: 16.0,
-  color: Colors.grey[800],
-);
+const TextStyle bodyTextStyle = TextStyle(
+    fontSize: 18.0, fontWeight: FontWeight.w400, color: Color(0xff363637));
 
 // Define the ThemeData for your app
 final ThemeData appTheme = ThemeData(
@@ -47,8 +46,8 @@ final ThemeData appTheme = ThemeData(
       ),
     ),
     buttonTheme: ButtonThemeData(
-      buttonColor: primaryColor,
-      textTheme: ButtonTextTheme.primary,
+      buttonColor: Colors.amberAccent,
+      // textTheme: ButtonTextTheme.primary,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0),
       ),
