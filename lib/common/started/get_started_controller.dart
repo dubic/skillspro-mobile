@@ -7,4 +7,8 @@ class GetStartedController {
   signUp() {
     Get.toNamed(Routes.signUp);
   }
+
+  toLogin() {
+    Get.toNamed(Routes.login);
+  }
 }

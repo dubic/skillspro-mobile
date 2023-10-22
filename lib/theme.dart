@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/get_core.dart';
 
 // Define the primary and accent colors for your app
 const Color primaryColor = Color(0xff854FE3);
@@ -14,8 +16,8 @@ const TextStyle headingTextStyle = TextStyle(
   color: Color(0xff363637),
 );
 
-const TextStyle bodyTextStyle = TextStyle(
-    fontSize: 18.0, fontWeight: FontWeight.w400, color: Color(0xff363637));
+const TextStyle bodyTextStyle =
+    TextStyle(fontSize: 18.0, fontWeight: FontWeight.w400, color: Color(0xff363637));
 
 // Define the ThemeData for your app
 final ThemeData appTheme = ThemeData(
@@ -36,7 +38,7 @@ final ThemeData appTheme = ThemeData(
       ),
       // ···
       titleLarge: TextStyle(
-        fontSize: 24.0,
+        fontSize: 30.0,
         fontWeight: FontWeight.bold,
         color: Colors.black,
       ),
@@ -52,7 +54,17 @@ final ThemeData appTheme = ThemeData(
         borderRadius: BorderRadius.circular(8.0),
       ),
     ),
-    floatingActionButtonTheme:
-        const FloatingActionButtonThemeData(backgroundColor: primaryColor));
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: primaryColor));
 
+InputDecoration inputDecoration(String label, [Widget? suffix]) {
+  return InputDecoration(
+      suffix: suffix,
+      labelText: label,
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)));
+}
+
+errorToast(String title, String message) {
+  Get.snackbar(title, message,
+      backgroundColor: Colors.redAccent, duration: const Duration(seconds: 5));
+}
 // Optionally, you can create a dark theme as well

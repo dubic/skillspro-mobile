@@ -56,7 +56,22 @@ class GetStarted extends StatelessWidget {
                       )),
                   const SizedBox(height: 10),
                   SubmitBtn(
-                      onPress: () => c.signUp(), title: const Text("Sign Up"))
+                      onPress: () => c.signUp(), title: const Text("Sign Up")),
+                  const SizedBox(height: 15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      const Text("Already have an account?"),
+                      GestureDetector(
+                          child: const Text(
+                            "Login",
+                            style: TextStyle(
+                                color: primaryColor,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onTap: () => c.toLogin())
+                    ],
+                  )
                 ],
               )
             ],
