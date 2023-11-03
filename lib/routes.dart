@@ -5,4 +5,5 @@ class Routes {
   static var home = "/home";
   static var signUp = "/signUp";
   static var verification = "/verification";
+  static var createProfile = "/createProfile";
 }

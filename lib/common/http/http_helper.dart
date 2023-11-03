@@ -25,6 +25,7 @@ class HttpResponse<T> {
   }
 
   HttpResponse.exception(DioException e) {
+    print('DATA on exception : ${e.response?.toString()}');
     var response = e.response;
     if (response == null) {
       error = HttpError('Error occurred', e.message ?? '');
@@ -45,10 +46,15 @@ class HttpResponse<T> {
     if (response.statusCode == 200) {
       return;
     }
-    if (response.data != null) {
+    try {
       error = HttpError(response.data['title'], response.data['detail']);
-    } else {
+    } on Error catch (e) {
       error = HttpError('Error occurred', response.statusMessage ?? '');
     }
+    // if (response.data != null) {
+    //   error = HttpError(response.data['title'], response.data['detail']);
+    // } else {
+    //   error = HttpError('Error occurred', response.statusMessage ?? '');
+    // }
   }
 }

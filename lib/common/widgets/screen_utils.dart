@@ -10,7 +10,8 @@ class ScreenUtils {
     return ScreenUtils(mediaQuery: mediaQuery);
   }
 
-  heightOf(int factor) {
+   double heightOf(int factor) {
     return mediaQuery.size.height / factor;
   }
+
 }

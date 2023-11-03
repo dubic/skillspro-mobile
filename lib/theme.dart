@@ -67,4 +67,14 @@ errorToast(String title, String message) {
   Get.snackbar(title, message,
       backgroundColor: Colors.redAccent, duration: const Duration(seconds: 5));
 }
+
+successToast(String title, String message) {
+  Get.snackbar(title, message,
+      backgroundColor: Colors.greenAccent, duration: const Duration(seconds: 3));
+}
+
+infoToast(String title, String message) {
+  Get.snackbar(title, message,
+      backgroundColor: Colors.lightBlue, duration: const Duration(seconds: 2));
+}
 // Optionally, you can create a dark theme as well

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skillspro/common/splash/splash.dart';
 import 'package:skillspro/features/auth/sign_up/sign_up.dart';
+import 'package:skillspro/features/auth/verification/verify.dart';
 import 'package:skillspro/routes.dart';
 import 'package:skillspro/theme.dart';
 
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: Routes.login, page: () => const Login()),
         GetPage(name: Routes.home, page: () => const Home()),
         GetPage(name: Routes.signUp, page: () => SignUp()),
+        GetPage(name: Routes.verification, page: () => Verification()),
       ],
     );
   }

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:skillspro/env.config.dart';
 import 'package:skillspro/routes.dart';
 
 import '../../features/auth/auth_holder.dart';
@@ -28,7 +29,7 @@ class SplashController {
   void waitAndMove(DateTime start, String route, Object? p) {
     var dateDiff = DateTime.now().difference(start);
     print('DATE DIFF : ${dateDiff.inSeconds}');
-    var secsRem = 3 - dateDiff.inSeconds;
+    var secsRem = isTest ? 0 : 3 - dateDiff.inSeconds;
     print('SECONDS REMAINING : $secsRem');
     if (secsRem > 1) {
       Timer(Duration(seconds: secsRem), () async {

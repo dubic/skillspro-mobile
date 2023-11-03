@@ -35,11 +35,11 @@ class Intro extends StatelessWidget {
               Obx(() {
                 return c.onLastPage.value == true
                     ? GestureDetector(
-                        onTap: () => c.done(), child: const Text("DONE"))
+                        key: const Key('done'), onTap: () => c.done(), child: const Text("DONE"))
                     : GestureDetector(
+                        key: const Key('next'),
                         onTap: () => c.pageController.nextPage(
-                            duration: const Duration(milliseconds: 500),
-                            curve: Curves.easeIn),
+                            duration: const Duration(milliseconds: 500), curve: Curves.easeIn),
                         child: const Text("NEXT"));
               })
             ],

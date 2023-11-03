@@ -20,7 +20,6 @@ class SignupController extends GetxController {
   createAccount(GlobalKey<FormBuilderState> formKey) async {
     bool? isValid = formKey.currentState?.saveAndValidate();
     if (isValid != null && isValid == false) {
-      // print("invalid form");
       return;
     }
     status.value = Status.processing;

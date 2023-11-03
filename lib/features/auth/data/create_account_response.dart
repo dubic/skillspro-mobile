@@ -1,14 +1,15 @@
 class CreateAccountResponse {
+  final String email;
   final bool verified;
   final int tokenTtlSecs;
 
-  CreateAccountResponse(this.verified, this.tokenTtlSecs);
+  CreateAccountResponse(this.email, this.verified, this.tokenTtlSecs);
 
-  static CreateAccountResponse? create(dynamic data) {
+  static CreateAccountResponse? create(String email, dynamic data) {
     if (data == null) {
       return null;
     }
-    return CreateAccountResponse(data['verified'], data['tokenTtlSecs']);
+    return CreateAccountResponse(email, data['verified'], data['tokenTtlSecs']);
   }
 
   @override

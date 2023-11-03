@@ -12,7 +12,7 @@ void main() {
     final dio = Dio();
     final dioAdapter = DioAdapter(dio: dio);
 
-    final account = {'name': 'Dubic uzuegbu'};
+    final account = {'name': 'Dubic uzuegbu', 'email': 'udubic@gmail.com'};
     dioAdapter.onPost(
       "$baseUrl/users",
           (request) => request.reply(200, {'verified': false, 'tokenTtlSecs': 300}),
@@ -41,5 +41,16 @@ void main() {
     expect(response.data, null);
     expect(response.error?.message, 'name must be provided');
     expect(response.error?.title, 'Bad Request');
+  });
+
+  test('should return an obscured email', () async {
+    final dio = Dio();
+    final dioAdapter = DioAdapter(dio: dio);
+
+    expect(UserService(dio).obscureEmail('udubic@gmail.com'), 'udu***@gmail.com');
+    expect(UserService(dio).obscureEmail('dubem.uzuegbu@gmail.com'), 'dubem.uzue***@gmail.com');
+    expect(UserService(dio).obscureEmail('dub@gmail.com'), 'd**@gmail.com');
+    expect(UserService(dio).obscureEmail('du@gmail.com'), 'd*@gmail.com');
+    expect(UserService(dio).obscureEmail('d@gmail.com'), '*@gmail.com');
   });
 }
