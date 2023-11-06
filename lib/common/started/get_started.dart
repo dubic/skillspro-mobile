@@ -42,21 +42,24 @@ class GetStarted extends StatelessWidget {
                       children: [
                         OutlinedButton(
                             onPressed: () => c.loginWithGoogle(),
-                            child: const Padding(
-                              padding: EdgeInsets.all(8.0),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
-                                  Image(image: AssetImage("assets/images/google_colorful.png")),
+                                  const Image(image: AssetImage("assets/images/google_colorful.png")),
                                   Expanded(
                                     flex: 4,
                                     child: Center(
-                                      child: Text(
-                                        "Sign in with Google",
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            color: primaryColor,
-                                            fontWeight: FontWeight.w600),
+                                      child: GestureDetector(
+                                        onTap: () => c.googleSignIn(),
+                                        child: const Text(
+                                          "Sign in with Google",
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              color: primaryColor,
+                                              fontWeight: FontWeight.w600),
+                                        ),
                                       ),
                                     ),
                                   )

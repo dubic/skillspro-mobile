@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "278882773004",
+    "project_id": "skillspro-81dd6",
+    "storage_bucket": "skillspro-81dd6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278882773004:android:0088083cb80bf10d752629",
+        "android_client_info": {
+          "package_name": "me.skillspro.skillspro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278882773004-cheop71e5sic1gfd8tbkgtvub36l09bt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.skillspro.skillspro",
+            "certificate_hash": "79f99cfa8a711efc85f5c6f839cff899bc5981a0"
+          }
+        },
+        {
+          "client_id": "278882773004-ngmi8hg3tp759figvh26msmsrg6c6k91.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD57c_uTR08T4Byo_qVUYpkfz6WHZqmgD4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278882773004-ngmi8hg3tp759figvh26msmsrg6c6k91.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

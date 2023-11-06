@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skillspro/common/splash/splash.dart';
@@ -10,9 +11,17 @@ import 'common/home/home.dart';
 import 'common/intro/intro.dart';
 import 'common/started/get_started.dart';
 import 'features/auth/login/login.dart';
+import 'firebase_options.dart';
 import 'home_bindings.dart';
 
-void main() => runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  FirebaseApp app = await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  print('Initialized default app $app');
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
