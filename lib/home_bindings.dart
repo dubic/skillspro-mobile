@@ -21,11 +21,11 @@ class HomeBinding implements Bindings {
         prefs: SharedPreferences.getInstance(), authHolder: authHolder));
     Get.put<AuthHolder>(authHolder);
     Get.create(() => IntroController());
-    Get.create(() => GetStartedController());
     final dio = Dio();
     var userService = UserService(dio);
     var authService = AuthService(dio, storage);
     Get.put(userService);
+    Get.create(() => GetStartedController(authService));
     Get.create(() => SignupController(userService));
     Get.create(() => VerifyController(userService, authService));
 
