@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skillspro/common/http/http_helper.dart';
 import 'package:skillspro/common/started/get_started_controller.dart';
+import 'package:skillspro/common/widgets/loading.dart';
 import 'package:skillspro/common/widgets/screen_utils.dart';
-import 'package:skillspro/common/widgets/submit_button.dart';
+import 'package:skillspro/common/widgets/buttons.dart';
 import 'package:skillspro/theme.dart';
 
 class GetStarted extends StatelessWidget {
@@ -17,22 +18,10 @@ class GetStarted extends StatelessWidget {
         backgroundColor: backgoundColor1,
         body: SafeArea(
           child: Obx(() => c.status.value == Status.processing
-              ? buildLoading(context)
+              // ignore: prefer_const_constructors
+              ? Loading(text: 'Creating your account...')
               : buildGetStarted(c, screenUtils)),
         ));
-  }
-
-//LOADING
-  buildLoading(BuildContext context) {
-    return const Center(
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        CircularProgressIndicator(strokeWidth: 2, backgroundColor: primaryColor),
-        SizedBox(height: 10),
-        Text('Creating your account...')
-      ],
-    ));
   }
 
 //GET STARTED

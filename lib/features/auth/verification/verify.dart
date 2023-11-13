@@ -6,7 +6,7 @@ import 'package:skillspro/features/auth/verification/verify_controller.dart';
 import 'package:skillspro/theme.dart';
 
 import '../../../common/http/http_helper.dart';
-import '../../../common/widgets/submit_button.dart';
+import '../../../common/widgets/buttons.dart';
 
 class Verification extends StatelessWidget {
   Verification({Key? key}) : super(key: key);

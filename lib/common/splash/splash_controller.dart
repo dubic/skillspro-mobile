@@ -7,7 +7,7 @@ import 'package:skillspro/routes.dart';
 
 import '../../features/auth/auth_holder.dart';
 
-class SplashController {
+class SplashController extends GetxController{
   final Future<SharedPreferences> prefs;
   final AuthHolder authHolder;
 
@@ -31,13 +31,11 @@ class SplashController {
     print('DATE DIFF : ${dateDiff.inSeconds}');
     var secsRem = isTest ? 0 : 3 - dateDiff.inSeconds;
     print('SECONDS REMAINING : $secsRem');
-    if (secsRem > 1) {
-      Timer(Duration(seconds: secsRem), () async {
-        Get.offAllNamed(route);
-      });
-    } else {
+
+    print('MOVING TO ROUTE : $route');
+    Timer(Duration(seconds: secsRem), () async {
       Get.offAllNamed(route);
-    }
+    });
   }
 
   Future<void> next() async {

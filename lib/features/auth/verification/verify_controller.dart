@@ -1,8 +1,6 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_form_builder/src/form_builder.dart';
 import 'package:get/get.dart';
-import 'package:skillspro/env.config.dart';
-import 'package:skillspro/features/auth/data/create_account_response.dart';
 import 'package:skillspro/features/auth/user_service.dart';
 
 import '../../../common/http/http_helper.dart';
@@ -11,7 +9,7 @@ import '../../../theme.dart';
 import '../auth_service.dart';
 
 class VerifyController extends GetxController {
-  final CreateAccountResponse createAccountResponse = Get.arguments;
+  final argumentMap = Get.arguments;
   final UserService userService;
   final AuthService authService;
   final status = Status.init.obs;
@@ -19,7 +17,7 @@ class VerifyController extends GetxController {
   VerifyController(this.userService, this.authService);
 
   String getEmail() {
-    return createAccountResponse.email;
+    return argumentMap['email'];
   }
 
   String obscuredEmail() {

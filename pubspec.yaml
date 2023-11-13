@@ -43,6 +43,7 @@ dependencies:
   google_sign_in: ^6.1.5
   firebase_auth: ^4.12.1
   firebase_core: ^2.21.0
+  gap: ^3.0.1
 
 flutter_icons:
   android: "launcher_icon"
@@ -87,6 +88,8 @@ flutter:
     - assets/images/undraw_Pic_profile_re.png
     - assets/images/welcome.png
     - assets/images/google_colorful.png
+    - assets/images/undraw_login.png
+    - assets/images/google_red.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

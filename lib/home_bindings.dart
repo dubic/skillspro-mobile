@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skillspro/common/intro/intro_controller.dart';
 import 'package:skillspro/common/started/get_started_controller.dart';
+import 'package:skillspro/features/auth/login/login_controller.dart';
 import 'package:skillspro/features/auth/sign_up/sign_up_controller.dart';
 import 'package:skillspro/features/auth/user_service.dart';
 import 'package:skillspro/features/auth/verification/verify_controller.dart';
@@ -22,12 +23,17 @@ class HomeBinding implements Bindings {
     Get.put<AuthHolder>(authHolder);
     Get.create(() => IntroController());
     final dio = Dio();
+    dio.options.connectTimeout = const Duration(seconds: 15);
+    dio.options.receiveTimeout = const Duration(seconds: 3);
+
     var userService = UserService(dio);
     var authService = AuthService(dio, storage);
     Get.put(userService);
+    Get.put(authService);
     Get.create(() => GetStartedController(authService));
     Get.create(() => SignupController(userService));
     Get.create(() => VerifyController(userService, authService));
+    Get.create(() => LoginController(authService));
 
   }
 }

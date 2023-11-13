@@ -30,7 +30,7 @@ class SignupController extends GetxController {
       return;
     }
     if (response.data?.verified == false) {
-      Get.toNamed(Routes.verification, arguments: response.data);
+      Get.toNamed(Routes.verification, arguments: {'email': response.data!.email});
     }
   }
 }

@@ -16,9 +16,9 @@ class AuthService {
 
   AuthService(this.dio, this._storage);
 
-  void saveAuthentication(AuthResponse authResponse) {
+  Future<void> saveAuthentication(AuthResponse authResponse) async {
     var jsonEncoded = authResponse.getData().toString();
-    _storage.write(key: 'auth_key', value: jsonEncoded);
+    await _storage.write(key: 'auth_key', value: jsonEncoded);
   }
 
   Future<AuthResponse?> getAuthentication() async {
@@ -32,6 +32,15 @@ class AuthService {
   Future<HttpResponse<AuthResponse?>> socialSignin(String idToken) async {
     try {
       final response = await dio.post("$baseUrl/auth/social/login", data: {'idToken': idToken});
+      return HttpResponse<AuthResponse>(response, AuthResponse.create(response.data));
+    } on DioException catch (e) {
+      return HttpResponse<AuthResponse>.exception(e);
+    }
+  }
+
+  Future<HttpResponse<AuthResponse>> login(Map<String, dynamic>? loginData) async {
+    try {
+      final response = await dio.post("$baseUrl/auth/login", data: loginData);
       return HttpResponse<AuthResponse>(response, AuthResponse.create(response.data));
     } on DioException catch (e) {
       return HttpResponse<AuthResponse>.exception(e);

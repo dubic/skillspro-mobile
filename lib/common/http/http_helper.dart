@@ -25,10 +25,15 @@ class HttpResponse<T> {
   }
 
   HttpResponse.exception(DioException e) {
-    print('DATA on exception : ${e.response?.toString()}');
+    print('DATA on exception type: ${e.type}  : ${e.response?.toString()}');
     var response = e.response;
     if (response == null) {
-      error = HttpError('Error occurred', e.message ?? '');
+      String? err;
+      if (e.type == DioExceptionType.connectionError ||
+          e.type == DioExceptionType.connectionTimeout) {
+        err = 'Connection error. Check your network';
+      }
+      error = HttpError('Error occurred',  err ?? e.message!);
       return;
     }
     buildError(response);

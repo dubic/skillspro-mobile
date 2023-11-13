@@ -7,10 +7,10 @@ import 'package:skillspro/features/auth/verification/verify.dart';
 import 'package:skillspro/routes.dart';
 import 'package:skillspro/theme.dart';
 
-import 'common/home/home.dart';
 import 'common/intro/intro.dart';
 import 'common/started/get_started.dart';
 import 'features/auth/login/login.dart';
+import 'features/home/home.dart';
 import 'firebase_options.dart';
 import 'home_bindings.dart';
 
@@ -36,10 +36,9 @@ class MyApp extends StatelessWidget {
       initialBinding: HomeBinding(),
       getPages: [
         GetPage(name: "/", page: () => const Splash()), // here!
-        GetPage(
-            name: Routes.getStarted, page: () => const GetStarted()), // here!
+        GetPage(name: Routes.getStarted, page: () => const GetStarted()), // here!
         GetPage(name: Routes.intro, page: () => const Intro()),
-        GetPage(name: Routes.login, page: () => const Login()),
+        GetPage(name: Routes.login, page: () => Login()),
         GetPage(name: Routes.home, page: () => const Home()),
         GetPage(name: Routes.signUp, page: () => SignUp()),
         GetPage(name: Routes.verification, page: () => Verification()),

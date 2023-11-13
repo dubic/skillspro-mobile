@@ -7,7 +7,7 @@ import 'package:skillspro/features/auth/sign_up/sign_up_controller.dart';
 import 'package:skillspro/theme.dart';
 
 import '../../../common/widgets/screen_utils.dart';
-import '../../../common/widgets/submit_button.dart';
+import '../../../common/widgets/buttons.dart';
 
 class SignUp extends StatelessWidget {
   SignUp({super.key});
