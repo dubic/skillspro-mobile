@@ -16,4 +16,4 @@ class IntegrationTestContext {
   }
 }
 
-enum TestRoute { SIGNUP, LOGIN }
+enum TestRoute { SIGNUP, LOGIN, PASSWORD }

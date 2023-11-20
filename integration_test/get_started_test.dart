@@ -17,7 +17,7 @@ testGetStarted(WidgetTester tester, TestRoute route) async {
     await tester.pumpAndSettle();
     await testSignUp(tester, route);
   }
-  if (route == TestRoute.LOGIN) {
+  if (route == TestRoute.LOGIN || route == TestRoute.PASSWORD) {
     await tester.tap(login);
     await tester.pumpAndSettle();
     await testLogin(tester, route);

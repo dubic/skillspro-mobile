@@ -24,7 +24,6 @@ class LoginController extends GetxController {
     if (isValid != null && isValid == false) {
       return;
     }
-    print('Loggin in: ${formKey.currentState?.value}');
     loginStatus.value = Status.processing;
     final loginResponse = await authService.login(formKey.currentState?.value);
 

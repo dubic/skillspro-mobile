@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skillspro/common/splash/splash.dart';
+import 'package:skillspro/features/auth/password/reset_password.dart';
 import 'package:skillspro/features/auth/sign_up/sign_up.dart';
 import 'package:skillspro/features/auth/verification/verify.dart';
 import 'package:skillspro/routes.dart';
@@ -10,6 +11,7 @@ import 'package:skillspro/theme.dart';
 import 'common/intro/intro.dart';
 import 'common/started/get_started.dart';
 import 'features/auth/login/login.dart';
+import 'features/auth/password/forgot_password.dart';
 import 'features/home/home.dart';
 import 'firebase_options.dart';
 import 'home_bindings.dart';
@@ -42,6 +44,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: Routes.home, page: () => const Home()),
         GetPage(name: Routes.signUp, page: () => SignUp()),
         GetPage(name: Routes.verification, page: () => Verification()),
+        GetPage(name: Routes.forgotPassword, page: () => ForgotPassword()),
+        GetPage(name: Routes.resetPassword, page: () => ResetPassword()),
       ],
     );
   }

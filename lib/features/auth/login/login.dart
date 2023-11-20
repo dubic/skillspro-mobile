@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:skillspro/common/widgets/loading.dart';
 import 'package:skillspro/common/widgets/buttons.dart';
+import 'package:skillspro/common/widgets/texts.dart';
 import 'package:skillspro/features/auth/login/login_controller.dart';
 import 'package:skillspro/theme.dart';
 
@@ -22,6 +23,7 @@ class Login extends StatelessWidget {
 
     return Scaffold(
         backgroundColor: backgoundColor1,
+        resizeToAvoidBottomInset: false,
         body: SafeArea(
           child: buildGetStarted(c, screenUtils),
         ));
@@ -81,13 +83,7 @@ class Login extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        GestureDetector(
-            key: const Key('forgotPassword'),
-            child: const Text(
-              "forgot password?",
-              style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
-            ),
-            onTap: () => c.forgotPassword())
+        LinkText(key: const Key('forgotPassword'), text: 'forgot password?', onTap: () => c.forgotPassword())
       ],
     );
   }

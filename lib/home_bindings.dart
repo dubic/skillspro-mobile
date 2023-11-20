@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skillspro/common/intro/intro_controller.dart';
 import 'package:skillspro/common/started/get_started_controller.dart';
 import 'package:skillspro/features/auth/login/login_controller.dart';
+import 'package:skillspro/features/auth/password/forgot_password_controller.dart';
 import 'package:skillspro/features/auth/sign_up/sign_up_controller.dart';
 import 'package:skillspro/features/auth/user_service.dart';
 import 'package:skillspro/features/auth/verification/verify_controller.dart';
@@ -34,6 +35,7 @@ class HomeBinding implements Bindings {
     Get.create(() => SignupController(userService));
     Get.create(() => VerifyController(userService, authService));
     Get.create(() => LoginController(authService));
+    Get.create(() => PasswordController(userService));
 
   }
 }

@@ -5,6 +5,7 @@ import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:skillspro/env.config.dart';
 import 'package:skillspro/features/auth/auth_service.dart';
 
+import 'password_test.dart';
 import 'test_context.dart';
 
 testLogin(WidgetTester tester, TestRoute route) async {
@@ -37,8 +38,15 @@ testLogin(WidgetTester tester, TestRoute route) async {
   await tester.enterText(email, IntegrationTestContext.loginRequest['email']!);
   await tester.enterText(password, IntegrationTestContext.loginRequest['password']!);
 
-  //submit
-  FocusManager.instance.primaryFocus?.unfocus();
-  await tester.tap(login);
-  await tester.pumpAndSettle();
+  if (route == TestRoute.LOGIN) {
+    //login submit
+    FocusManager.instance.primaryFocus?.unfocus();
+    await tester.tap(login);
+    await tester.pumpAndSettle();
+  }
+  if (route == TestRoute.PASSWORD) {
+    await tester.tap(forgotPassword);
+    await tester.pumpAndSettle();
+    await testPassword(tester, route);
+  }
 }

@@ -49,4 +49,13 @@ class UserService {
       return HttpResponse<AuthResponse>.exception(e);
     }
   }
+
+  Future<HttpResponse<String>> forgotPassword(String email) async {
+    try {
+      final response = await dio.get('$baseUrl/users/forgot-password/$email');
+      return HttpResponse<String>(response, 'successful');
+    } on DioException catch (e) {
+      return HttpResponse<String>.exception(e);
+    }
+  }
 }

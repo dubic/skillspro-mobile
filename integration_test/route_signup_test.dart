@@ -26,6 +26,7 @@ void main() {
     });
   });
 
+  /////LOGIN//////
   group('login tests', () {
     testWidgets('login route', (tester) async {
       // Load app widget.
@@ -36,6 +37,20 @@ void main() {
       await tester.pumpAndSettle();
       await testIntro(tester);
       await testGetStarted(tester, TestRoute.LOGIN);
+    });
+  });
+
+  /////PASSWORD//////
+  group('password tests', () {
+    testWidgets('password route', (tester) async {
+      // Load app widget.
+      await tester.pumpWidget(const MyApp());
+      IntegrationTestContext.resetIntro(seen: false);
+
+      // Trigger a frame.
+      await tester.pumpAndSettle();
+      await testIntro(tester);
+      await testGetStarted(tester, TestRoute.PASSWORD);
     });
   });
 }

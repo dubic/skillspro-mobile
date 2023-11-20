@@ -6,5 +6,6 @@ class Routes {
   static var signUp = "/signUp";
   static var verification = "/verification";
   static var forgotPassword = "/forgotPassword";
+  static var resetPassword = "/resetPassword";
   static var createProfile = "/createProfile";
 }
