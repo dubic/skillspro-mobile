@@ -5,6 +5,7 @@ import 'package:skillspro/common/started/get_started_controller.dart';
 import 'package:skillspro/common/widgets/loading.dart';
 import 'package:skillspro/common/widgets/screen_utils.dart';
 import 'package:skillspro/common/widgets/buttons.dart';
+import 'package:skillspro/common/widgets/texts.dart';
 import 'package:skillspro/theme.dart';
 
 class GetStarted extends StatelessWidget {
@@ -39,13 +40,9 @@ class GetStarted extends StatelessWidget {
                   width: screenUtils.heightOf(3)),
               Column(
                 children: [
-                  const Text("Welcome", style: headingTextStyle),
+                  const TitleText(text: 'Welcome'),
                   SizedBox(height: screenUtils.heightOf(35)),
-                  const Text(
-                    "Create an account or login to showcase your talents",
-                    style: bodyTextStyle,
-                    textAlign: TextAlign.center,
-                  )
+                  const BodyText(text: 'Create an account or login to showcase your talents')
                 ],
               ),
               // SizedBox(height: ScreenUtils.heightOf(30)),
@@ -84,13 +81,7 @@ class GetStarted extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       const Text("Already have an account?"),
-                      GestureDetector(
-                          key: const Key('login'),
-                          child: const Text(
-                            "Login",
-                            style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
-                          ),
-                          onTap: () => c.toLogin())
+                      LinkText(key: const Key('login'), text: 'Login', onTap: () => c.toLogin())
                     ],
                   )
                 ],

@@ -13,7 +13,13 @@ testPassword(WidgetTester tester, TestRoute route) async {
   final dioAdapter = DioAdapter(dio: userService.dio);
 
   dioAdapter.onGet("$baseUrl/users/forgot-password/${IntegrationTestContext.user['email']}",
-      (request) => request.reply(200, {}));
+          (request) => request.reply(200, {}));
+  dioAdapter.onPost("$baseUrl/users/reset-password",
+          (request) => request.reply(200, {}), data: {
+        "email": "udubic@gmail.com",
+        "token": "22913950",
+        "newPassword": "new_dcamic_4602"
+      });
 
   expect(find.text('Enter the email address associated with this account'), findsOneWidget);
   final email = find.byKey(const Key('email'));
@@ -24,5 +30,19 @@ testPassword(WidgetTester tester, TestRoute route) async {
   await tester.pumpAndSettle();
 
   ///RESET PASSWORD/////
+  expect(find.text('Reset password'), findsAtLeastNWidgets(1));
+  final token = find.byKey(const Key('token'));
+  final password = find.byKey(const Key('password'));
+  final resend = find.text('Resend token');
+  final reset = find.byKey(const Key('resetPassword'));
 
+  //trigger resend
+  await tester.tap(resend);
+  await tester.pumpAndSettle();
+
+  //reset
+  await tester.enterText(token, '1234567');
+  await tester.enterText(password, 'my-new-password');
+  await tester.tap(reset);
+  await tester.pumpAndSettle();
 }

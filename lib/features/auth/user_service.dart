@@ -58,4 +58,13 @@ class UserService {
       return HttpResponse<String>.exception(e);
     }
   }
+
+  Future<HttpResponse<String>> resetPassword(Map<String, dynamic> resetData) async {
+    try {
+      final response = await dio.post('$baseUrl/users/reset-password', data: resetData);
+      return HttpResponse<String>(response, 'successful');
+    } on DioException catch (e) {
+      return HttpResponse<String>.exception(e);
+    }
+  }
 }

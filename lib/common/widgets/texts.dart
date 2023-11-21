@@ -26,15 +26,16 @@ class BodyText extends StatelessWidget {
 class LinkText extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
+  final bool loading;
 
-  const LinkText({Key? key, required this.text, required this.onTap}) : super(key: key);
+  const LinkText({Key? key, required this.text, required this.onTap, this.loading = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: onTap,
+        onTap: loading ? null : onTap,
         child: Text(
-          text,
+          loading ? 'Please wait...' : text,
           style: const TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
         ));
   }

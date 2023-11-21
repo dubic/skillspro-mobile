@@ -1,12 +1,9 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:skillspro/env.config.dart';
-import 'package:skillspro/features/auth/auth_service.dart';
 import 'package:skillspro/features/auth/user_service.dart';
-import 'package:skillspro/features/auth/verification/verify_controller.dart';
 
 import 'test_context.dart';
 

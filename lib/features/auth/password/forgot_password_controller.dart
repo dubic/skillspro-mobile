@@ -22,8 +22,8 @@ class PasswordController extends GetxController {
       return;
     }
     remindStatus.value = Status.processing;
-    final forgotPasswordResponse =
-        await userService.forgotPassword(formKey.currentState?.value['email']);
+    final email = formKey.currentState?.value['email'];
+    final forgotPasswordResponse = await userService.forgotPassword(email);
     remindStatus.value = forgotPasswordResponse.getStatus();
 
     if (!forgotPasswordResponse.isSuccessful()) {
@@ -31,6 +31,6 @@ class PasswordController extends GetxController {
       return;
     }
 
-    Get.toNamed(Routes.resetPassword);
+    Get.toNamed(Routes.resetPassword, arguments: {'email': email});
   }
 }
