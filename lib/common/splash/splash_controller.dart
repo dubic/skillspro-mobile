@@ -3,15 +3,15 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skillspro/env.config.dart';
+import 'package:skillspro/features/auth/auth_service.dart';
 import 'package:skillspro/routes.dart';
-
-import '../../features/auth/auth_holder.dart';
+import 'package:skillspro/theme.dart';
 
 class SplashController extends GetxController{
   final Future<SharedPreferences> prefs;
-  final AuthHolder authHolder;
+  final AuthService authService;
 
-  SplashController({required this.prefs, required this.authHolder}) {}
+  SplashController({required this.prefs, required this.authService});
 
   Future<bool> hasSeenIntro() async {
     final bool? seen = await prefs.then((p) => p.getBool('seen'));
@@ -19,7 +19,10 @@ class SplashController extends GetxController{
   }
 
   Future<bool> isAuthenticated() async {
-    return await authHolder.getAuthenticationToken() != null;
+    await authService.getAuthentication();
+    print('Auth account ::: ${authService.getAccount()}');
+    await authService.registerAuthInterceptor();
+    return await authService.isValidAuthentication();
   }
 
   seenIntro() async {
@@ -29,7 +32,7 @@ class SplashController extends GetxController{
   void waitAndMove(DateTime start, String route, Object? p) {
     var dateDiff = DateTime.now().difference(start);
     print('DATE DIFF : ${dateDiff.inSeconds}');
-    var secsRem = isTest ? 0 : 3 - dateDiff.inSeconds;
+    var secsRem = 3 - dateDiff.inSeconds;
     print('SECONDS REMAINING : $secsRem');
 
     print('MOVING TO ROUTE : $route');
@@ -39,15 +42,20 @@ class SplashController extends GetxController{
   }
 
   Future<void> next() async {
+    var startTime = DateTime.now();
     if (await hasSeenIntro() == false) {
-      waitAndMove(DateTime.now(), Routes.intro, null);
+      waitAndMove(startTime, Routes.intro, null);
       seenIntro();
       return;
     }
-    if (await isAuthenticated() == false) {
-      waitAndMove(DateTime.now(), Routes.getStarted, null);
-      return;
+    try {
+      if (await isAuthenticated() == false) {
+        waitAndMove(startTime, Routes.getStarted, null);
+        return;
+      }
+    } on Exception catch (e) {
+     errorToast('Could not connect to server!', e.toString());
     }
-    waitAndMove(DateTime.now(), Routes.home, null);
+    waitAndMove(startTime, Routes.createProfile, null);
   }
 }

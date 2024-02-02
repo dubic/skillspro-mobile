@@ -5,6 +5,9 @@ import 'package:skillspro/common/splash/splash.dart';
 import 'package:skillspro/features/auth/password/reset_password.dart';
 import 'package:skillspro/features/auth/sign_up/sign_up.dart';
 import 'package:skillspro/features/auth/verification/verify.dart';
+import 'package:skillspro/features/profile/data/state_select.dart';
+import 'package:skillspro/features/profile/details/create_profile.dart';
+import 'package:skillspro/features/profile/skills/add_skills.dart';
 import 'package:skillspro/routes.dart';
 import 'package:skillspro/theme.dart';
 
@@ -46,6 +49,9 @@ class MyApp extends StatelessWidget {
         GetPage(name: Routes.verification, page: () => Verification()),
         GetPage(name: Routes.forgotPassword, page: () => ForgotPassword()),
         GetPage(name: Routes.resetPassword, page: () => ResetPassword()),
+        GetPage(name: Routes.createProfile, page: () => CreateProfile()),
+        GetPage(name: Routes.addSkills, page: () => const AddSkills()),
+        GetPage(name: Routes.stateSelect, page: () => StateSelect()),
       ],
     );
   }

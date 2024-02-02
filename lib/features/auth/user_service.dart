@@ -1,16 +1,16 @@
 // ignore: implementation_imports
+
 import 'package:dio/dio.dart';
-import 'package:dio/src/dio.dart';
-import 'package:get/get.dart';
+import 'package:http_parser/http_parser.dart';
 import 'package:skillspro/common/http/http_helper.dart';
 import 'package:skillspro/env.config.dart';
 import 'package:skillspro/features/auth/data/auth_response.dart';
 import 'package:skillspro/features/auth/data/create_account_response.dart';
 
 class UserService {
-  Dio dio;
+  final Dio dio;
 
-  UserService(this.dio);
+  UserService({required this.dio});
 
   Future<HttpResponse<CreateAccountResponse>> createAccount(dynamic accountData) async {
     try {
@@ -66,5 +66,34 @@ class UserService {
     } on DioException catch (e) {
       return HttpResponse<String>.exception(e);
     }
+  }
+
+  Future<HttpResponse<String>> uploadProfileImage(String path, String fileName) async {
+    try {
+      final formData = FormData.fromMap({
+        'profile': await MultipartFile.fromFile(path, filename: fileName, contentType: MediaType('image','jpeg')),
+
+      });
+      print('Image data path :: $path');
+      print('Image data name :: ${formData.files[0].value.filename}');
+      print('Image data type :: ${formData.files[0].value.contentType?.type}');
+      print('Image data type :: ${formData.files[0].value.contentType?.type}');
+      final response = await dio.post('$baseUrl/users/photo', data: formData, options: Options(contentType: Headers.multipartFormDataContentType));
+      return HttpResponse<String>(response, response.data.toString());
+    } on DioException catch (e) {
+      return HttpResponse<String>.exception(e);
+    }
+  }
+
+  Future<String> fakeUploadProfileImage(String path, String fileName) async {
+    final formData = FormData.fromMap({
+      'profile': await MultipartFile.fromFile(path, filename: fileName),
+    });
+    final url = await Future.delayed(
+        const Duration(seconds: 2),
+        () =>
+            "https://www.kasandbox.org/programming-images/avatars/marcimus.png");
+    //final response = await dio.post('$baseUrl/users/photo', data: formData);
+    return url;
   }
 }

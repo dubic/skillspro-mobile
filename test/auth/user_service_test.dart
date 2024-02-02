@@ -18,7 +18,7 @@ void main() {
           (request) => request.reply(200, {'verified': false, 'tokenTtlSecs': 300}),
       data: account
     );
-    final response = await UserService(dio).createAccount(account);
+    final response = await UserService(dio: dio).createAccount(account);
     print(response.data);
     expect(response.isSuccessful(), true);
     expect(response.data?.verified, false);
@@ -35,7 +35,7 @@ void main() {
             (request) => request.reply(400, {'title': 'Bad Request', 'detail': 'name must be provided'}),
         data: account
     );
-    final response = await UserService(dio).createAccount(account);
+    final response = await UserService(dio: dio).createAccount(account);
     print(response.error);
     expect(response.isSuccessful(), false);
     expect(response.data, null);
@@ -47,10 +47,10 @@ void main() {
     final dio = Dio();
     final dioAdapter = DioAdapter(dio: dio);
 
-    expect(UserService(dio).obscureEmail('udubic@gmail.com'), 'udu***@gmail.com');
-    expect(UserService(dio).obscureEmail('dubem.uzuegbu@gmail.com'), 'dubem.uzue***@gmail.com');
-    expect(UserService(dio).obscureEmail('dub@gmail.com'), 'd**@gmail.com');
-    expect(UserService(dio).obscureEmail('du@gmail.com'), 'd*@gmail.com');
-    expect(UserService(dio).obscureEmail('d@gmail.com'), '*@gmail.com');
+    expect(UserService(dio: dio).obscureEmail('udubic@gmail.com'), 'udu***@gmail.com');
+    expect(UserService(dio: dio).obscureEmail('dubem.uzuegbu@gmail.com'), 'dubem.uzue***@gmail.com');
+    expect(UserService(dio: dio).obscureEmail('dub@gmail.com'), 'd**@gmail.com');
+    expect(UserService(dio: dio).obscureEmail('du@gmail.com'), 'd*@gmail.com');
+    expect(UserService(dio: dio).obscureEmail('d@gmail.com'), '*@gmail.com');
   });
 }

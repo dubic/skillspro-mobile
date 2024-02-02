@@ -12,6 +12,17 @@ class TitleText extends StatelessWidget {
   }
 }
 
+class SubTitleText extends StatelessWidget {
+  final String text;
+
+  const SubTitleText({Key? key, required this.text}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(text, style: subHeadingTextStyle);
+  }
+}
+
 class BodyText extends StatelessWidget {
   final String text;
 
@@ -38,5 +49,17 @@ class LinkText extends StatelessWidget {
           loading ? 'Please wait...' : text,
           style: const TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
         ));
+  }
+}
+
+class BoldText extends StatelessWidget {
+  final String text;
+  final double? size;
+
+  const BoldText({Key? key, required this.text, this.size}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(text, style: boldBodyTextStyle(size ?? 18.0));
   }
 }

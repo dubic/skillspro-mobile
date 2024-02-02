@@ -26,23 +26,19 @@ class LoginController extends GetxController {
     }
     loginStatus.value = Status.processing;
     final loginResponse = await authService.login(formKey.currentState?.value);
+    loginStatus.value = loginResponse.getStatus();
 
     if (!loginResponse.isSuccessful()) {
       errorToast('Login error', loginResponse.error?.message ?? '');
-      loginStatus.value = loginResponse.getStatus();
       return;
     }
 
     final authResponse = loginResponse.data!;
     if (authResponse.account.verified == false) {
-      loginStatus.value = loginResponse.getStatus();
       Get.toNamed(Routes.verification, arguments: {'email': authResponse.account.email});
       return;
     }
-
-    await authService.saveAuthentication(authResponse);
-    loginStatus.value = loginResponse.getStatus();
-    Get.offAllNamed(Routes.home);
+    Get.offAllNamed(Routes.createProfile);
   }
 
   loginWithGoogle() {

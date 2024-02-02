@@ -8,4 +8,6 @@ class Routes {
   static var forgotPassword = "/forgotPassword";
   static var resetPassword = "/resetPassword";
   static var createProfile = "/createProfile";
+  static var addSkills = "/addSkills";
+  static var stateSelect = "/stateSelect";
 }

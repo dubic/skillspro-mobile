@@ -44,6 +44,12 @@ dependencies:
   firebase_auth: ^4.12.1
   firebase_core: ^2.21.0
   gap: ^3.0.1
+  cloud_firestore: ^4.13.6
+  image_picker: ^1.0.5
+  cached_network_image: ^3.3.0
+  flutter_image_compress: ^2.1.0
+  path_provider: ^2.1.2
+  http_parser: ^4.0.2
 
 flutter_icons:
   android: "launcher_icon"
@@ -84,6 +90,11 @@ flutter:
   assets:
     - assets/images/skillspro_white.png
     - assets/images/undraw_portfolio_feedback.svg
+    - assets/images/camera.svg
+    - assets/images/instagram.svg
+    - assets/images/mobile.svg
+    - assets/images/location.svg
+    - assets/images/flag-for-nigeria-circle.png
     - assets/images/undraw_social_girl_re_kdrx.svg
     - assets/images/undraw_Pic_profile_re.png
     - assets/images/welcome.png

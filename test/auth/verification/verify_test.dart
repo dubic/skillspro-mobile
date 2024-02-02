@@ -14,7 +14,7 @@ void main(){
     //given
     final dio = Dio();
     final dioAdapter = DioAdapter(dio: dio);
-    final controller = Get.put(VerifyController(UserService(dio), AuthService(dio, const FlutterSecureStorage())));
+    final controller = Get.put(VerifyController(UserService(dio: dio), AuthService(dio, const FlutterSecureStorage())));
     await tester.pumpWidget(Verification());
 
     // expect(find.text('We need to verify your account to protect your details'), findsOneWidget);

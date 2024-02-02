@@ -11,13 +11,22 @@ const Color backgoundColor1 = Colors.white;
 
 // Define the text styles for the app
 const TextStyle headingTextStyle = TextStyle(
-  fontSize: 32.0,
+  fontSize: 28.0,
+  fontWeight: FontWeight.bold,
+  color: Color(0xff363637),
+);
+
+const TextStyle subHeadingTextStyle = TextStyle(
+  fontSize: 20.0,
   fontWeight: FontWeight.bold,
   color: Color(0xff363637),
 );
 
 const TextStyle bodyTextStyle =
     TextStyle(fontSize: 18.0, fontWeight: FontWeight.w400, color: Color(0xff363637));
+
+TextStyle boldBodyTextStyle(double size) =>
+    TextStyle(fontSize: size, fontWeight: FontWeight.bold, color: const Color(0xff363637));
 
 // Define the ThemeData for your app
 final ThemeData appTheme = ThemeData(
@@ -40,7 +49,7 @@ final ThemeData appTheme = ThemeData(
       titleLarge: TextStyle(
         fontSize: 30.0,
         fontWeight: FontWeight.bold,
-        color: Colors.black,
+        color: textColor,
       ),
       bodyMedium: TextStyle(
         fontSize: 16.0,
@@ -56,10 +65,17 @@ final ThemeData appTheme = ThemeData(
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: primaryColor));
 
-InputDecoration inputDecoration(String label, [Widget? suffix]) {
+InputDecoration inputDecoration(String label,
+{String? placeholder, Widget? prefix, Widget? suffix}) {
   return InputDecoration(
+      prefixIcon: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        child: prefix,
+      ),
       suffix: suffix,
       labelText: label,
+      hintText: placeholder,
+      hintStyle: const TextStyle(fontSize: 18),
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)));
 }
 
