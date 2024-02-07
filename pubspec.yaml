@@ -50,6 +50,7 @@ dependencies:
   flutter_image_compress: ^2.1.0
   path_provider: ^2.1.2
   http_parser: ^4.0.2
+  choice: ^2.3.0
 
 flutter_icons:
   android: "launcher_icon"

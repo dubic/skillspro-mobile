@@ -18,10 +18,12 @@ class GetStarted extends StatelessWidget {
     return Scaffold(
         backgroundColor: backgoundColor1,
         body: SafeArea(
-          child: Obx(() => c.status.value == Status.processing
+          child: Obx(() =>
               // ignore: prefer_const_constructors
-              ? Loading(text: 'Creating your account...')
-              : buildGetStarted(c, screenUtils)),
+              Loading(
+                  text: 'Creating your account...',
+                  loading: c.status.value == Status.processing,
+                  child: buildGetStarted(c, screenUtils))),
         ));
   }
 

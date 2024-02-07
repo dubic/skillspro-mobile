@@ -20,7 +20,7 @@ class AuthService {
 
   Future<void> saveAuthentication(AuthResponse authResponse) async {
     _authResponse = authResponse;
-    print('Auth save data ::: ${authResponse.getData()}');
+    // print('Auth save data ::: ${authResponse.getData()}');
     var jsonEncoded = jsonEncode(authResponse.getData());
     await _storage.write(key: 'auth_key', value: jsonEncoded);
     print('Auth account saved ::: ${getAccount()}');

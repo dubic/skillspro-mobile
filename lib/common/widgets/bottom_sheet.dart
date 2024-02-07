@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:skillspro/common/widgets/texts.dart';
 
 import '../../theme.dart';
 
@@ -17,7 +15,8 @@ class BottomSheetContainer extends StatelessWidget {
               color: backgoundColor1,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0))),
-          height: 900,
+          height: 600,
+          width: double.infinity,
           child: Padding(padding: const EdgeInsets.all(12.0), child: content))
     ]);
   }

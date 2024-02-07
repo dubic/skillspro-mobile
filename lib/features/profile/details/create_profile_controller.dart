@@ -6,22 +6,20 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skillspro/features/auth/auth_service.dart';
 import 'package:skillspro/features/auth/data/auth_response.dart';
-import 'package:skillspro/features/profile/data/state_select.dart';
 import 'package:skillspro/features/profile/profile_service.dart';
 import 'package:skillspro/routes.dart';
 import 'package:skillspro/theme.dart';
-import 'package:skillspro/utils.dart';
 
 import '../../../common/http/http_helper.dart';
 import '../../auth/user_service.dart';
 
 class CreateProfileController extends GetxController {
-  // final imageUploadStatus = Status.init.obs;
-  final nextStatus = Status.init.obs;
+
   final UserService userService;
   final AuthService authService;
   final ProfileService profileService;
   RxString imageUrl = Status.init.obs;
+  final nextStatus = Status.init.obs;
 
   CreateProfileController(
       {required this.userService, required this.authService, required this.profileService}) {

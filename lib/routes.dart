@@ -10,4 +10,5 @@ class Routes {
   static var createProfile = "/createProfile";
   static var addSkills = "/addSkills";
   static var stateSelect = "/stateSelect";
+  static var addProjects = "/addProjects";
 }

@@ -51,6 +51,7 @@ class HomeBinding implements Bindings {
     Get.create(() => CreateProfileController(
         authService: authService, userService: userService, profileService: profileService));
     Get.put(SelectStateController(fireStoreService));
-    Get.create(() => AddSkillsController());
+    Get.create(() =>
+        AddSkillsController(profileService: profileService, fireStoreService: fireStoreService));
   }
 }
